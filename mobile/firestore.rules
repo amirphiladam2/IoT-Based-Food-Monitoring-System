@@ -1,0 +1,82 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isCurrentUser(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function userDocPath() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function hasLinkedDevice(deviceId) {
+      return signedIn()
+        && exists(userDocPath())
+        && get(userDocPath()).data.device_id == deviceId;
+    }
+
+    function deviceIdIsValid() {
+      return !('device_id' in request.resource.data)
+        || request.resource.data.device_id == ''
+        || exists(/databases/$(database)/documents/devices/$(request.resource.data.device_id));
+    }
+
+    function changedUserFieldsAreAllowed() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        'avatarBase64',
+        'avatarUpdatedAt',
+        'avatarUrl',
+        'device_id',
+        'fcm_token'
+      ]);
+    }
+
+    function createdUserFieldsAreAllowed() {
+      return request.resource.data.keys().hasOnly([
+        'avatarBase64',
+        'avatarUpdatedAt',
+        'avatarUrl',
+        'device_id',
+        'fcm_token'
+      ]);
+    }
+
+    function userFieldTypesAreValid() {
+      return (!('avatarBase64' in request.resource.data) || request.resource.data.avatarBase64 is string)
+        && (!('avatarUpdatedAt' in request.resource.data) || request.resource.data.avatarUpdatedAt is int)
+        && (!('avatarUrl' in request.resource.data) || request.resource.data.avatarUrl is string)
+        && (!('device_id' in request.resource.data) || request.resource.data.device_id is string)
+        && (!('fcm_token' in request.resource.data) || request.resource.data.fcm_token is string);
+    }
+
+    match /users/{userId} {
+      allow read: if isCurrentUser(userId);
+      allow create: if isCurrentUser(userId)
+        && createdUserFieldsAreAllowed()
+        && userFieldTypesAreValid()
+        && deviceIdIsValid();
+      allow update: if isCurrentUser(userId)
+        && changedUserFieldsAreAllowed()
+        && userFieldTypesAreValid()
+        && deviceIdIsValid();
+      allow delete: if false;
+    }
+
+    match /devices/{deviceId} {
+      allow read: if hasLinkedDevice(deviceId);
+      allow write: if false;
+    }
+
+    match /food_sensor_data/{readingId} {
+      allow read: if signedIn()
+        && exists(userDocPath())
+        && resource.data.device_id == get(userDocPath()).data.device_id;
+      allow write: if false;
+    }
+  }
+}

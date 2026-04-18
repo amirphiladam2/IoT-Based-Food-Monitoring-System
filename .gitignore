@@ -1,0 +1,45 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dependency directories
+**/node_modules/
+
+# Local environment and secrets
+**/.env
+**/.env.*
+!mobile/.env.example
+backend/Lambda/serviceAccountKey.json
+backend/Firmware/src/secrets.h
+mobile/google-services.json
+*.jks
+*.p8
+*.p12
+*.pem
+*.key
+*.mobileprovision
+
+# Build and generated output
+**/.expo/
+**/.firebase/
+**/.pio/
+**/dist/
+**/web-build/
+**/.kotlin/
+mobile/android/
+mobile/ios/
+backend/Lambda/*.zip
+
+# Logs and temp files
+firebase-debug.log
+**/firebase-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.orig.*
+*.tsbuildinfo
+
+# Local backup for flattened nested repository metadata
+mobile/.git.backup/
