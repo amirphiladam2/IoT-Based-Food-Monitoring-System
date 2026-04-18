@@ -78,33 +78,21 @@ README.md          Project overview and setup
 
 ## Project Visuals
 
-This README is ready for diagrams and screenshots. Place image assets in `docs/images/` and keep the naming consistent so the visuals stay easy to maintain.
+The project diagrams and current result screenshot are included below.
 
-Suggested assets:
-
-| Purpose | Suggested filename |
-| --- | --- |
-| Architecture diagram | `docs/images/architecture-diagram.png` |
-| Circuit diagram | `docs/images/circuit-diagram.png` |
-| Mobile app result screenshot | `docs/images/mobile-dashboard.png` |
-| Hardware setup or prototype photo | `docs/images/hardware-setup.jpg` |
-
-Suggested section layout once the images are ready:
-
-```md
-## Architecture Diagram
+### Architecture Diagram
 
 ![FreshGuard architecture diagram](docs/images/architecture-diagram.png)
 
-## Circuit Diagram
+### Circuit Diagram
 
 ![FreshGuard circuit diagram](docs/images/circuit-diagram.png)
 
-## Results
+### Result
 
 ![FreshGuard mobile dashboard](docs/images/mobile-dashboard.jpeg)
-![FreshGuard hardware setup](docs/images/hardware-setup.jpg)
-```
+
+If you want to add more visuals later, place them in `docs/images/` and reference them directly in Markdown so GitHub renders them inline.
 
 ## Project Setup
 
