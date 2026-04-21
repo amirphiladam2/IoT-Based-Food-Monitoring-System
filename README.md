@@ -84,9 +84,10 @@ The project diagrams and current result screenshot are included below.
 
 ### Result
 
-![FreshGuard mobile dashboard](docs/images/mobile-dashboard.jpeg)
+![FreshGuard mobile dashboard](docs/images/smart-box.jpeg)
 
-If you want to add more visuals later, place them in `docs/images/` and reference them directly in Markdown so GitHub renders them inline.
+![FreshGuard mobile dashboard](docs/images/app-dashboard.jpeg)
+
 
 ## Project Setup
 
