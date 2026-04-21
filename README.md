@@ -20,13 +20,16 @@ The project lets a user pair a hardware device to their account, monitor live se
 ## Repository Structure
 
 ```text
-docs/
-  images/          Architecture diagrams, circuit diagrams, screenshots
-backend/
-  Firmware/        ESP32 firmware (PlatformIO + Arduino)
-  Lambda/          AWS Lambda that processes IoT payloads
-mobile/            Expo React Native app
-README.md          Project overview and setup
+📁 docs/
+   └── 📁 images/          # Architecture diagrams, circuit diagrams, screenshots
+
+📁 backend/
+   ├── 📁 Firmware/        # ESP32 firmware (PlatformIO + Arduino)
+   └── 📁 Lambda/          # AWS Lambda that processes IoT payloads
+
+📁 mobile/                  # Expo React Native app
+
+📄 README.md                # Project overview and setup
 ```
 
 ## Key Features
