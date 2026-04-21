@@ -14,16 +14,8 @@ The project lets a user pair a hardware device to their account, monitor live se
 
 ## Architecture
 
-```text
-ESP32 + sensors
-    ->
-AWS IoT Core (MQTT)
-    ->
-AWS Lambda
-    ->
-Cloud Firestore + FCM
-    ->
-Expo / React Native mobile app
+```
+![FreshGuard architecture diagram](docs/images/architecture-diagram.png)
 ```
 
 ## Repository Structure
