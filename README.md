@@ -14,9 +14,8 @@ The project lets a user pair a hardware device to their account, monitor live se
 
 ## Architecture
 
-```
 ![FreshGuard architecture diagram](docs/images/architecture-diagram.png)
-```
+
 
 ## Repository Structure
 
